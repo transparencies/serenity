@@ -1,1 +1,1 @@
-initSidebarItems({"mod":[["message_collector",""],["reaction_collector",""]]});
+window.SIDEBAR_ITEMS = {"fn":["collect"],"struct":["ComponentInteractionCollector","EventCollector","MessageCollector","ModalInteractionCollector","ReactionCollector"]};

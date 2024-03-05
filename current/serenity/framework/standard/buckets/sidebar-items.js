@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["BucketAction","A bucket may return results based on how it set up."],["LimitedFor","Decides what a bucket will use to collect tickets for."]],"struct":[["BucketBuilder",""],["RevertBucket","An error struct that can be returned from a command to set the bucket one step back."]]});
+window.SIDEBAR_ITEMS = {"enum":["LimitedFor","RateLimitAction"],"struct":["BucketBuilder","RateLimitInfo","RevertBucket"]};

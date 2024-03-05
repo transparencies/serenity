@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["Cache","A cache containing data received from `Shard`s."],["Settings","Settings for the cache."]],"trait":[["CacheUpdate","Trait used for updating the cache with a type."],["FromStrAndCache",""],["StrExt",""]]});
+window.SIDEBAR_ITEMS = {"struct":["Cache","CacheRef","Settings"],"trait":["CacheUpdate"],"type":["ChannelMessagesRef","CurrentUserRef","GuildChannelRef","GuildChannelsRef","GuildRef","GuildRoleRef","GuildRolesRef","MemberRef","MessageRef","SettingsRef","UserRef"]};
