@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/model/event.rs`."><title>event.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-80aa586b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="serenity" data-themes="" data-resource-suffix="" data-rustdoc-version="1.94.0-nightly (806c2a35d 2025-12-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-a3946164.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../../../static.files/src-script-813739b1.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-3e30299d.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">serenity/model/</div>event.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-4"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! All the events this library handles.
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/model/event.rs`."><title>event.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="serenity" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (a423f68a0 2026-02-13)" data-channel="nightly" data-search-js="search-fb33671b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-f9617a14.js"></script><script defer src="../../../static.files/src-script-813739b1.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-12f88f4f.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1><div class="sub-heading">serenity/model/</div>event.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-4"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! All the events this library handles.
 <a href=#2 id=2 data-nosnippet>2</a>//!
 <a href=#3 id=3 data-nosnippet>3</a>//! Every event includes the gateway intent required to receive it, as well as a link to the
 <a href=#4 id=4 data-nosnippet>4</a>//! Discord documentation for the event.
@@ -23,7 +23,7 @@
 <a href=#23 id=23 data-nosnippet>23</a>
 <a href=#24 id=24 data-nosnippet>24</a><span class="doccomment">/// Requires no gateway intents.
 <a href=#25 id=25 data-nosnippet>25</a>///
-<a href=#26 id=26 data-nosnippet>26</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#application-command-permissions-update).
+<a href=#26 id=26 data-nosnippet>26</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#application-command-permissions-update).
 <a href=#27 id=27 data-nosnippet>27</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#28 id=28 data-nosnippet>28</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#29 id=29 data-nosnippet>29</a>#[serde(transparent)]
@@ -34,7 +34,7 @@
 <a href=#34 id=34 data-nosnippet>34</a>
 <a href=#35 id=35 data-nosnippet>35</a><span class="doccomment">/// Requires [`GatewayIntents::AUTO_MODERATION_CONFIGURATION`].
 <a href=#36 id=36 data-nosnippet>36</a>///
-<a href=#37 id=37 data-nosnippet>37</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#auto-moderation-rule-create).
+<a href=#37 id=37 data-nosnippet>37</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#auto-moderation-rule-create).
 <a href=#38 id=38 data-nosnippet>38</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#39 id=39 data-nosnippet>39</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#40 id=40 data-nosnippet>40</a>#[serde(transparent)]
@@ -45,7 +45,7 @@
 <a href=#45 id=45 data-nosnippet>45</a>
 <a href=#46 id=46 data-nosnippet>46</a><span class="doccomment">/// Requires [`GatewayIntents::AUTO_MODERATION_CONFIGURATION`].
 <a href=#47 id=47 data-nosnippet>47</a>///
-<a href=#48 id=48 data-nosnippet>48</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#auto-moderation-rule-update).
+<a href=#48 id=48 data-nosnippet>48</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#auto-moderation-rule-update).
 <a href=#49 id=49 data-nosnippet>49</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#50 id=50 data-nosnippet>50</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#51 id=51 data-nosnippet>51</a>#[serde(transparent)]
@@ -56,7 +56,7 @@
 <a href=#56 id=56 data-nosnippet>56</a>
 <a href=#57 id=57 data-nosnippet>57</a><span class="doccomment">/// Requires [`GatewayIntents::AUTO_MODERATION_CONFIGURATION`].
 <a href=#58 id=58 data-nosnippet>58</a>///
-<a href=#59 id=59 data-nosnippet>59</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#auto-moderation-rule-delete).
+<a href=#59 id=59 data-nosnippet>59</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#auto-moderation-rule-delete).
 <a href=#60 id=60 data-nosnippet>60</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#61 id=61 data-nosnippet>61</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#62 id=62 data-nosnippet>62</a>#[serde(transparent)]
@@ -67,7 +67,7 @@
 <a href=#67 id=67 data-nosnippet>67</a>
 <a href=#68 id=68 data-nosnippet>68</a><span class="doccomment">/// Requires [`GatewayIntents::AUTO_MODERATION_EXECUTION`].
 <a href=#69 id=69 data-nosnippet>69</a>///
-<a href=#70 id=70 data-nosnippet>70</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#auto-moderation-action-execution).
+<a href=#70 id=70 data-nosnippet>70</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#auto-moderation-action-execution).
 <a href=#71 id=71 data-nosnippet>71</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#72 id=72 data-nosnippet>72</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#73 id=73 data-nosnippet>73</a>#[serde(transparent)]
@@ -83,7 +83,7 @@
 <a href=#83 id=83 data-nosnippet>83</a>///
 <a href=#84 id=84 data-nosnippet>84</a>/// Requires [`GatewayIntents::GUILDS`].
 <a href=#85 id=85 data-nosnippet>85</a>///
-<a href=#86 id=86 data-nosnippet>86</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#channel-create).
+<a href=#86 id=86 data-nosnippet>86</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#channel-create).
 <a href=#87 id=87 data-nosnippet>87</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#88 id=88 data-nosnippet>88</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#89 id=89 data-nosnippet>89</a>#[serde(transparent)]
@@ -95,7 +95,7 @@
 <a href=#95 id=95 data-nosnippet>95</a>
 <a href=#96 id=96 data-nosnippet>96</a><span class="doccomment">/// Requires [`GatewayIntents::GUILDS`].
 <a href=#97 id=97 data-nosnippet>97</a>///
-<a href=#98 id=98 data-nosnippet>98</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#channel-delete).
+<a href=#98 id=98 data-nosnippet>98</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#channel-delete).
 <a href=#99 id=99 data-nosnippet>99</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#100 id=100 data-nosnippet>100</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#101 id=101 data-nosnippet>101</a>#[serde(transparent)]
@@ -106,7 +106,7 @@
 <a href=#106 id=106 data-nosnippet>106</a>
 <a href=#107 id=107 data-nosnippet>107</a><span class="doccomment">/// Requires [`GatewayIntents::GUILDS`] or [`GatewayIntents::DIRECT_MESSAGES`].
 <a href=#108 id=108 data-nosnippet>108</a>///
-<a href=#109 id=109 data-nosnippet>109</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#channel-pins-update).
+<a href=#109 id=109 data-nosnippet>109</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#channel-pins-update).
 <a href=#110 id=110 data-nosnippet>110</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#111 id=111 data-nosnippet>111</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#112 id=112 data-nosnippet>112</a>#[non_exhaustive]
@@ -118,7 +118,7 @@
 <a href=#118 id=118 data-nosnippet>118</a>
 <a href=#119 id=119 data-nosnippet>119</a><span class="doccomment">/// Requires [`GatewayIntents::GUILDS`].
 <a href=#120 id=120 data-nosnippet>120</a>///
-<a href=#121 id=121 data-nosnippet>121</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#channel-update).
+<a href=#121 id=121 data-nosnippet>121</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#channel-update).
 <a href=#122 id=122 data-nosnippet>122</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#123 id=123 data-nosnippet>123</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#124 id=124 data-nosnippet>124</a>#[serde(transparent)]
@@ -129,7 +129,7 @@
 <a href=#129 id=129 data-nosnippet>129</a>
 <a href=#130 id=130 data-nosnippet>130</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_MODERATION`] and [`Permissions::VIEW_AUDIT_LOG`].
 <a href=#131 id=131 data-nosnippet>131</a>///
-<a href=#132 id=132 data-nosnippet>132</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#guild-audit-log-entry-create).
+<a href=#132 id=132 data-nosnippet>132</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#guild-audit-log-entry-create).
 <a href=#133 id=133 data-nosnippet>133</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#134 id=134 data-nosnippet>134</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#135 id=135 data-nosnippet>135</a>#[non_exhaustive]
@@ -141,7 +141,7 @@
 <a href=#141 id=141 data-nosnippet>141</a>
 <a href=#142 id=142 data-nosnippet>142</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_MODERATION`].
 <a href=#143 id=143 data-nosnippet>143</a>///
-<a href=#144 id=144 data-nosnippet>144</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#guild-ban-add).
+<a href=#144 id=144 data-nosnippet>144</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#guild-ban-add).
 <a href=#145 id=145 data-nosnippet>145</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#146 id=146 data-nosnippet>146</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#147 id=147 data-nosnippet>147</a>#[non_exhaustive]
@@ -152,7 +152,7 @@
 <a href=#152 id=152 data-nosnippet>152</a>
 <a href=#153 id=153 data-nosnippet>153</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_MODERATION`].
 <a href=#154 id=154 data-nosnippet>154</a>///
-<a href=#155 id=155 data-nosnippet>155</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#guild-ban-remove).
+<a href=#155 id=155 data-nosnippet>155</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#guild-ban-remove).
 <a href=#156 id=156 data-nosnippet>156</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#157 id=157 data-nosnippet>157</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#158 id=158 data-nosnippet>158</a>#[non_exhaustive]
@@ -163,7 +163,7 @@
 <a href=#163 id=163 data-nosnippet>163</a>
 <a href=#164 id=164 data-nosnippet>164</a><span class="doccomment">/// Requires [`GatewayIntents::GUILDS`].
 <a href=#165 id=165 data-nosnippet>165</a>///
-<a href=#166 id=166 data-nosnippet>166</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#guild-create).
+<a href=#166 id=166 data-nosnippet>166</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#guild-create).
 <a href=#167 id=167 data-nosnippet>167</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#168 id=168 data-nosnippet>168</a>#[derive(Clone, Debug, Serialize)]
 <a href=#169 id=169 data-nosnippet>169</a>#[serde(transparent)]
@@ -187,7 +187,7 @@
 <a href=#187 id=187 data-nosnippet>187</a>
 <a href=#188 id=188 data-nosnippet>188</a><span class="doccomment">/// Requires [`GatewayIntents::GUILDS`].
 <a href=#189 id=189 data-nosnippet>189</a>///
-<a href=#190 id=190 data-nosnippet>190</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#guild-delete).
+<a href=#190 id=190 data-nosnippet>190</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#guild-delete).
 <a href=#191 id=191 data-nosnippet>191</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#192 id=192 data-nosnippet>192</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#193 id=193 data-nosnippet>193</a>#[serde(transparent)]
@@ -198,7 +198,7 @@
 <a href=#198 id=198 data-nosnippet>198</a>
 <a href=#199 id=199 data-nosnippet>199</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_EMOJIS_AND_STICKERS`].
 <a href=#200 id=200 data-nosnippet>200</a>///
-<a href=#201 id=201 data-nosnippet>201</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#guild-emojis-update).
+<a href=#201 id=201 data-nosnippet>201</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#guild-emojis-update).
 <a href=#202 id=202 data-nosnippet>202</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#203 id=203 data-nosnippet>203</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#204 id=204 data-nosnippet>204</a>#[non_exhaustive]
@@ -210,7 +210,7 @@
 <a href=#210 id=210 data-nosnippet>210</a>
 <a href=#211 id=211 data-nosnippet>211</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_INTEGRATIONS`].
 <a href=#212 id=212 data-nosnippet>212</a>///
-<a href=#213 id=213 data-nosnippet>213</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#guild-integrations-update).
+<a href=#213 id=213 data-nosnippet>213</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#guild-integrations-update).
 <a href=#214 id=214 data-nosnippet>214</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#215 id=215 data-nosnippet>215</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#216 id=216 data-nosnippet>216</a>#[non_exhaustive]
@@ -220,7 +220,7 @@
 <a href=#220 id=220 data-nosnippet>220</a>
 <a href=#221 id=221 data-nosnippet>221</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_MEMBERS`].
 <a href=#222 id=222 data-nosnippet>222</a>///
-<a href=#223 id=223 data-nosnippet>223</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#guild-member-add).
+<a href=#223 id=223 data-nosnippet>223</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#guild-member-add).
 <a href=#224 id=224 data-nosnippet>224</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#225 id=225 data-nosnippet>225</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#226 id=226 data-nosnippet>226</a>#[serde(transparent)]
@@ -231,7 +231,7 @@
 <a href=#231 id=231 data-nosnippet>231</a>
 <a href=#232 id=232 data-nosnippet>232</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_MEMBERS`].
 <a href=#233 id=233 data-nosnippet>233</a>///
-<a href=#234 id=234 data-nosnippet>234</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#guild-member-remove).
+<a href=#234 id=234 data-nosnippet>234</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#guild-member-remove).
 <a href=#235 id=235 data-nosnippet>235</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#236 id=236 data-nosnippet>236</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#237 id=237 data-nosnippet>237</a>#[non_exhaustive]
@@ -242,7 +242,7 @@
 <a href=#242 id=242 data-nosnippet>242</a>
 <a href=#243 id=243 data-nosnippet>243</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_MEMBERS`].
 <a href=#244 id=244 data-nosnippet>244</a>///
-<a href=#245 id=245 data-nosnippet>245</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#guild-member-update).
+<a href=#245 id=245 data-nosnippet>245</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#guild-member-update).
 <a href=#246 id=246 data-nosnippet>246</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#247 id=247 data-nosnippet>247</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#248 id=248 data-nosnippet>248</a>#[non_exhaustive]
@@ -270,7 +270,7 @@
 <a href=#270 id=270 data-nosnippet>270</a>
 <a href=#271 id=271 data-nosnippet>271</a><span class="doccomment">/// Requires no gateway intents.
 <a href=#272 id=272 data-nosnippet>272</a>///
-<a href=#273 id=273 data-nosnippet>273</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#guild-members-chunk).
+<a href=#273 id=273 data-nosnippet>273</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#guild-members-chunk).
 <a href=#274 id=274 data-nosnippet>274</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#275 id=275 data-nosnippet>275</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#276 id=276 data-nosnippet>276</a>#[serde(remote = <span class="string">"Self"</span>)]
@@ -313,7 +313,7 @@
 <a href=#313 id=313 data-nosnippet>313</a>
 <a href=#314 id=314 data-nosnippet>314</a><span class="doccomment">/// Requires no gateway intents.
 <a href=#315 id=315 data-nosnippet>315</a>///
-<a href=#316 id=316 data-nosnippet>316</a>/// [Discord docs](https://discord.com/developers/docs/events/gateway-events#soundboard-sounds).
+<a href=#316 id=316 data-nosnippet>316</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#soundboard-sounds).
 <a href=#317 id=317 data-nosnippet>317</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#318 id=318 data-nosnippet>318</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#319 id=319 data-nosnippet>319</a>#[non_exhaustive]
@@ -326,7 +326,7 @@
 <a href=#326 id=326 data-nosnippet>326</a>
 <a href=#327 id=327 data-nosnippet>327</a><span class="doccomment">/// Requires no gateway intents.
 <a href=#328 id=328 data-nosnippet>328</a>///
-<a href=#329 id=329 data-nosnippet>329</a>/// [Discord docs](https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sound-create).
+<a href=#329 id=329 data-nosnippet>329</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#guild-soundboard-sound-create).
 <a href=#330 id=330 data-nosnippet>330</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#331 id=331 data-nosnippet>331</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#332 id=332 data-nosnippet>332</a>#[serde(transparent)]
@@ -337,7 +337,7 @@
 <a href=#337 id=337 data-nosnippet>337</a>
 <a href=#338 id=338 data-nosnippet>338</a><span class="doccomment">/// Requires no gateway intents.
 <a href=#339 id=339 data-nosnippet>339</a>///
-<a href=#340 id=340 data-nosnippet>340</a>/// [Discord docs](https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sound-update).
+<a href=#340 id=340 data-nosnippet>340</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#guild-soundboard-sound-update).
 <a href=#341 id=341 data-nosnippet>341</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#342 id=342 data-nosnippet>342</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#343 id=343 data-nosnippet>343</a>#[serde(transparent)]
@@ -348,7 +348,7 @@
 <a href=#348 id=348 data-nosnippet>348</a>
 <a href=#349 id=349 data-nosnippet>349</a><span class="doccomment">/// Requires no gateway intents.
 <a href=#350 id=350 data-nosnippet>350</a>///
-<a href=#351 id=351 data-nosnippet>351</a>/// [Discord docs](https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sounds-update).
+<a href=#351 id=351 data-nosnippet>351</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#guild-soundboard-sounds-update).
 <a href=#352 id=352 data-nosnippet>352</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#353 id=353 data-nosnippet>353</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#354 id=354 data-nosnippet>354</a>#[non_exhaustive]
@@ -359,7 +359,7 @@
 <a href=#359 id=359 data-nosnippet>359</a>
 <a href=#360 id=360 data-nosnippet>360</a><span class="doccomment">/// Requires no gateway intents.
 <a href=#361 id=361 data-nosnippet>361</a>///
-<a href=#362 id=362 data-nosnippet>362</a>/// [Discord docs](https://discord.com/developers/docs/events/gateway-events#guild-soundboard-sound-delete).
+<a href=#362 id=362 data-nosnippet>362</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#guild-soundboard-sound-delete).
 <a href=#363 id=363 data-nosnippet>363</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#364 id=364 data-nosnippet>364</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#365 id=365 data-nosnippet>365</a>#[non_exhaustive]
@@ -378,7 +378,7 @@
 <a href=#378 id=378 data-nosnippet>378</a>
 <a href=#379 id=379 data-nosnippet>379</a><span class="doccomment">/// Requires [`GatewayIntents::GUILDS`].
 <a href=#380 id=380 data-nosnippet>380</a>///
-<a href=#381 id=381 data-nosnippet>381</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#guild-role-create).
+<a href=#381 id=381 data-nosnippet>381</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#guild-role-create).
 <a href=#382 id=382 data-nosnippet>382</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#383 id=383 data-nosnippet>383</a>#[derive(Clone, Debug, Serialize)]
 <a href=#384 id=384 data-nosnippet>384</a>#[non_exhaustive]
@@ -399,7 +399,7 @@
 <a href=#399 id=399 data-nosnippet>399</a>
 <a href=#400 id=400 data-nosnippet>400</a><span class="doccomment">/// Requires [`GatewayIntents::GUILDS`].
 <a href=#401 id=401 data-nosnippet>401</a>///
-<a href=#402 id=402 data-nosnippet>402</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#guild-role-delete).
+<a href=#402 id=402 data-nosnippet>402</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#guild-role-delete).
 <a href=#403 id=403 data-nosnippet>403</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#404 id=404 data-nosnippet>404</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#405 id=405 data-nosnippet>405</a>#[non_exhaustive]
@@ -410,7 +410,7 @@
 <a href=#410 id=410 data-nosnippet>410</a>
 <a href=#411 id=411 data-nosnippet>411</a><span class="doccomment">/// Requires [`GatewayIntents::GUILDS`].
 <a href=#412 id=412 data-nosnippet>412</a>///
-<a href=#413 id=413 data-nosnippet>413</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#guild-role-update).
+<a href=#413 id=413 data-nosnippet>413</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#guild-role-update).
 <a href=#414 id=414 data-nosnippet>414</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#415 id=415 data-nosnippet>415</a>#[derive(Clone, Debug, Serialize)]
 <a href=#416 id=416 data-nosnippet>416</a>#[non_exhaustive]
@@ -431,7 +431,7 @@
 <a href=#431 id=431 data-nosnippet>431</a>
 <a href=#432 id=432 data-nosnippet>432</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_EMOJIS_AND_STICKERS`].
 <a href=#433 id=433 data-nosnippet>433</a>///
-<a href=#434 id=434 data-nosnippet>434</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#guild-stickers-update).
+<a href=#434 id=434 data-nosnippet>434</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#guild-stickers-update).
 <a href=#435 id=435 data-nosnippet>435</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#436 id=436 data-nosnippet>436</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#437 id=437 data-nosnippet>437</a>#[non_exhaustive]
@@ -443,7 +443,7 @@
 <a href=#443 id=443 data-nosnippet>443</a>
 <a href=#444 id=444 data-nosnippet>444</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_INVITES`] and [`Permissions::MANAGE_CHANNELS`] permission.
 <a href=#445 id=445 data-nosnippet>445</a>///
-<a href=#446 id=446 data-nosnippet>446</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#invite-create).
+<a href=#446 id=446 data-nosnippet>446</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#invite-create).
 <a href=#447 id=447 data-nosnippet>447</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#448 id=448 data-nosnippet>448</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#449 id=449 data-nosnippet>449</a>#[non_exhaustive]
@@ -477,7 +477,7 @@
 <a href=#477 id=477 data-nosnippet>477</a>
 <a href=#478 id=478 data-nosnippet>478</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_INVITES`] and [`Permissions::MANAGE_CHANNELS`] permission.
 <a href=#479 id=479 data-nosnippet>479</a>///
-<a href=#480 id=480 data-nosnippet>480</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#invite-delete).
+<a href=#480 id=480 data-nosnippet>480</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#invite-delete).
 <a href=#481 id=481 data-nosnippet>481</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#482 id=482 data-nosnippet>482</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#483 id=483 data-nosnippet>483</a>#[non_exhaustive]
@@ -489,7 +489,7 @@
 <a href=#489 id=489 data-nosnippet>489</a>
 <a href=#490 id=490 data-nosnippet>490</a><span class="doccomment">/// Requires [`GatewayIntents::GUILDS`].
 <a href=#491 id=491 data-nosnippet>491</a>///
-<a href=#492 id=492 data-nosnippet>492</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#guild-update).
+<a href=#492 id=492 data-nosnippet>492</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#guild-update).
 <a href=#493 id=493 data-nosnippet>493</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#494 id=494 data-nosnippet>494</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#495 id=495 data-nosnippet>495</a>#[serde(transparent)]
@@ -501,7 +501,7 @@
 <a href=#501 id=501 data-nosnippet>501</a>
 <a href=#502 id=502 data-nosnippet>502</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_MESSAGES`] or [`GatewayIntents::DIRECT_MESSAGES`].
 <a href=#503 id=503 data-nosnippet>503</a>///
-<a href=#504 id=504 data-nosnippet>504</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#message-create).
+<a href=#504 id=504 data-nosnippet>504</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#message-create).
 <a href=#505 id=505 data-nosnippet>505</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#506 id=506 data-nosnippet>506</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#507 id=507 data-nosnippet>507</a>#[serde(transparent)]
@@ -512,7 +512,7 @@
 <a href=#512 id=512 data-nosnippet>512</a>
 <a href=#513 id=513 data-nosnippet>513</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_MESSAGES`] or [`GatewayIntents::DIRECT_MESSAGES`].
 <a href=#514 id=514 data-nosnippet>514</a>///
-<a href=#515 id=515 data-nosnippet>515</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#message-delete-bulk).
+<a href=#515 id=515 data-nosnippet>515</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#message-delete-bulk).
 <a href=#516 id=516 data-nosnippet>516</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#517 id=517 data-nosnippet>517</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#518 id=518 data-nosnippet>518</a>#[non_exhaustive]
@@ -524,7 +524,7 @@
 <a href=#524 id=524 data-nosnippet>524</a>
 <a href=#525 id=525 data-nosnippet>525</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_MESSAGES`] or [`GatewayIntents::DIRECT_MESSAGES`].
 <a href=#526 id=526 data-nosnippet>526</a>///
-<a href=#527 id=527 data-nosnippet>527</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#message-delete).
+<a href=#527 id=527 data-nosnippet>527</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#message-delete).
 <a href=#528 id=528 data-nosnippet>528</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#529 id=529 data-nosnippet>529</a>#[derive(Clone, Copy, Debug, Deserialize, Serialize)]
 <a href=#530 id=530 data-nosnippet>530</a>#[non_exhaustive]
@@ -552,7 +552,7 @@
 <a href=#552 id=552 data-nosnippet>552</a>/// may include them anyways, independent from whether they have actually changed (like
 <a href=#553 id=553 data-nosnippet>553</a>/// [`Self::guild_id`])
 <a href=#554 id=554 data-nosnippet>554</a>///
-<a href=#555 id=555 data-nosnippet>555</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#message-update).
+<a href=#555 id=555 data-nosnippet>555</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#message-update).
 <a href=#556 id=556 data-nosnippet>556</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#557 id=557 data-nosnippet>557</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#558 id=558 data-nosnippet>558</a>#[non_exhaustive]
@@ -686,7 +686,7 @@
 <a href=#686 id=686 data-nosnippet>686</a>
 <a href=#687 id=687 data-nosnippet>687</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_PRESENCES`].
 <a href=#688 id=688 data-nosnippet>688</a>///
-<a href=#689 id=689 data-nosnippet>689</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#presence-update).
+<a href=#689 id=689 data-nosnippet>689</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#presence-update).
 <a href=#690 id=690 data-nosnippet>690</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#691 id=691 data-nosnippet>691</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#692 id=692 data-nosnippet>692</a>#[serde(transparent)]
@@ -708,7 +708,7 @@
 <a href=#708 id=708 data-nosnippet>708</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_MESSAGE_REACTIONS`] or
 <a href=#709 id=709 data-nosnippet>709</a>/// [`GatewayIntents::DIRECT_MESSAGE_REACTIONS`].
 <a href=#710 id=710 data-nosnippet>710</a>///
-<a href=#711 id=711 data-nosnippet>711</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#message-reaction-add).
+<a href=#711 id=711 data-nosnippet>711</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#message-reaction-add).
 <a href=#712 id=712 data-nosnippet>712</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#713 id=713 data-nosnippet>713</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#714 id=714 data-nosnippet>714</a>#[serde(transparent)]
@@ -720,7 +720,7 @@
 <a href=#720 id=720 data-nosnippet>720</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_MESSAGE_REACTIONS`] or
 <a href=#721 id=721 data-nosnippet>721</a>/// [`GatewayIntents::DIRECT_MESSAGE_REACTIONS`].
 <a href=#722 id=722 data-nosnippet>722</a>///
-<a href=#723 id=723 data-nosnippet>723</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#message-reaction-remove).
+<a href=#723 id=723 data-nosnippet>723</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#message-reaction-remove).
 <a href=#724 id=724 data-nosnippet>724</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#725 id=725 data-nosnippet>725</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#726 id=726 data-nosnippet>726</a>#[serde(transparent)]
@@ -735,7 +735,7 @@
 <a href=#735 id=735 data-nosnippet>735</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_MESSAGE_REACTIONS`] or
 <a href=#736 id=736 data-nosnippet>736</a>/// [`GatewayIntents::DIRECT_MESSAGE_REACTIONS`].
 <a href=#737 id=737 data-nosnippet>737</a>///
-<a href=#738 id=738 data-nosnippet>738</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#message-reaction-remove-all).
+<a href=#738 id=738 data-nosnippet>738</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#message-reaction-remove-all).
 <a href=#739 id=739 data-nosnippet>739</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#740 id=740 data-nosnippet>740</a>#[derive(Clone, Copy, Debug, Deserialize, Serialize)]
 <a href=#741 id=741 data-nosnippet>741</a>#[non_exhaustive]
@@ -748,7 +748,7 @@
 <a href=#748 id=748 data-nosnippet>748</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_MESSAGE_REACTIONS`] or
 <a href=#749 id=749 data-nosnippet>749</a>/// [`GatewayIntents::DIRECT_MESSAGE_REACTIONS`].
 <a href=#750 id=750 data-nosnippet>750</a>///
-<a href=#751 id=751 data-nosnippet>751</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#message-reaction-remove-emoji-message-reaction-remove-emoji-event-fields).
+<a href=#751 id=751 data-nosnippet>751</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#message-reaction-remove-emoji-message-reaction-remove-emoji-event-fields).
 <a href=#752 id=752 data-nosnippet>752</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#753 id=753 data-nosnippet>753</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#754 id=754 data-nosnippet>754</a>#[serde(transparent)]
@@ -761,7 +761,7 @@
 <a href=#761 id=761 data-nosnippet>761</a>///
 <a href=#762 id=762 data-nosnippet>762</a>/// Requires no gateway intents.
 <a href=#763 id=763 data-nosnippet>763</a>///
-<a href=#764 id=764 data-nosnippet>764</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#ready).
+<a href=#764 id=764 data-nosnippet>764</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#ready).
 <a href=#765 id=765 data-nosnippet>765</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#766 id=766 data-nosnippet>766</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#767 id=767 data-nosnippet>767</a>#[serde(transparent)]
@@ -772,7 +772,7 @@
 <a href=#772 id=772 data-nosnippet>772</a>
 <a href=#773 id=773 data-nosnippet>773</a><span class="doccomment">/// Requires no gateway intents.
 <a href=#774 id=774 data-nosnippet>774</a>///
-<a href=#775 id=775 data-nosnippet>775</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#resumed).
+<a href=#775 id=775 data-nosnippet>775</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#resumed).
 <a href=#776 id=776 data-nosnippet>776</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#777 id=777 data-nosnippet>777</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#778 id=778 data-nosnippet>778</a>#[non_exhaustive]
@@ -780,7 +780,7 @@
 <a href=#780 id=780 data-nosnippet>780</a>
 <a href=#781 id=781 data-nosnippet>781</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_MESSAGE_TYPING`] or [`GatewayIntents::DIRECT_MESSAGE_TYPING`].
 <a href=#782 id=782 data-nosnippet>782</a>///
-<a href=#783 id=783 data-nosnippet>783</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#typing-start).
+<a href=#783 id=783 data-nosnippet>783</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#typing-start).
 <a href=#784 id=784 data-nosnippet>784</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#785 id=785 data-nosnippet>785</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#786 id=786 data-nosnippet>786</a>#[non_exhaustive]
@@ -811,7 +811,7 @@
 <a href=#811 id=811 data-nosnippet>811</a>///
 <a href=#812 id=812 data-nosnippet>812</a>/// Requires no gateway intents.
 <a href=#813 id=813 data-nosnippet>813</a>///
-<a href=#814 id=814 data-nosnippet>814</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#user-update).
+<a href=#814 id=814 data-nosnippet>814</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#user-update).
 <a href=#815 id=815 data-nosnippet>815</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#816 id=816 data-nosnippet>816</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#817 id=817 data-nosnippet>817</a>#[serde(transparent)]
@@ -822,7 +822,7 @@
 <a href=#822 id=822 data-nosnippet>822</a>
 <a href=#823 id=823 data-nosnippet>823</a><span class="doccomment">/// Requires no gateway intents.
 <a href=#824 id=824 data-nosnippet>824</a>///
-<a href=#825 id=825 data-nosnippet>825</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#voice-server-update).
+<a href=#825 id=825 data-nosnippet>825</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#voice-server-update).
 <a href=#826 id=826 data-nosnippet>826</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#827 id=827 data-nosnippet>827</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#828 id=828 data-nosnippet>828</a>#[non_exhaustive]
@@ -834,7 +834,7 @@
 <a href=#834 id=834 data-nosnippet>834</a>
 <a href=#835 id=835 data-nosnippet>835</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_VOICE_STATES`].
 <a href=#836 id=836 data-nosnippet>836</a>///
-<a href=#837 id=837 data-nosnippet>837</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#voice-state-update).
+<a href=#837 id=837 data-nosnippet>837</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#voice-state-update).
 <a href=#838 id=838 data-nosnippet>838</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#839 id=839 data-nosnippet>839</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#840 id=840 data-nosnippet>840</a>#[serde(transparent)]
@@ -857,7 +857,7 @@
 <a href=#857 id=857 data-nosnippet>857</a>
 <a href=#858 id=858 data-nosnippet>858</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_WEBHOOKS`].
 <a href=#859 id=859 data-nosnippet>859</a>///
-<a href=#860 id=860 data-nosnippet>860</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#webhooks-update).
+<a href=#860 id=860 data-nosnippet>860</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#webhooks-update).
 <a href=#861 id=861 data-nosnippet>861</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#862 id=862 data-nosnippet>862</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#863 id=863 data-nosnippet>863</a>#[non_exhaustive]
@@ -868,7 +868,7 @@
 <a href=#868 id=868 data-nosnippet>868</a>
 <a href=#869 id=869 data-nosnippet>869</a><span class="doccomment">/// Requires no gateway intents.
 <a href=#870 id=870 data-nosnippet>870</a>///
-<a href=#871 id=871 data-nosnippet>871</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#interaction-create).
+<a href=#871 id=871 data-nosnippet>871</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#interaction-create).
 <a href=#872 id=872 data-nosnippet>872</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#873 id=873 data-nosnippet>873</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#874 id=874 data-nosnippet>874</a>#[serde(transparent)]
@@ -879,7 +879,7 @@
 <a href=#879 id=879 data-nosnippet>879</a>
 <a href=#880 id=880 data-nosnippet>880</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_INTEGRATIONS`].
 <a href=#881 id=881 data-nosnippet>881</a>///
-<a href=#882 id=882 data-nosnippet>882</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#integration-create).
+<a href=#882 id=882 data-nosnippet>882</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#integration-create).
 <a href=#883 id=883 data-nosnippet>883</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#884 id=884 data-nosnippet>884</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#885 id=885 data-nosnippet>885</a>#[serde(transparent)]
@@ -890,7 +890,7 @@
 <a href=#890 id=890 data-nosnippet>890</a>
 <a href=#891 id=891 data-nosnippet>891</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_INTEGRATIONS`].
 <a href=#892 id=892 data-nosnippet>892</a>///
-<a href=#893 id=893 data-nosnippet>893</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#integration-update).
+<a href=#893 id=893 data-nosnippet>893</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#integration-update).
 <a href=#894 id=894 data-nosnippet>894</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#895 id=895 data-nosnippet>895</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#896 id=896 data-nosnippet>896</a>#[serde(transparent)]
@@ -901,7 +901,7 @@
 <a href=#901 id=901 data-nosnippet>901</a>
 <a href=#902 id=902 data-nosnippet>902</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_INTEGRATIONS`].
 <a href=#903 id=903 data-nosnippet>903</a>///
-<a href=#904 id=904 data-nosnippet>904</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#integration-delete).
+<a href=#904 id=904 data-nosnippet>904</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#integration-delete).
 <a href=#905 id=905 data-nosnippet>905</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#906 id=906 data-nosnippet>906</a>#[derive(Clone, Debug, Serialize, Deserialize)]
 <a href=#907 id=907 data-nosnippet>907</a>#[non_exhaustive]
@@ -913,7 +913,7 @@
 <a href=#913 id=913 data-nosnippet>913</a>
 <a href=#914 id=914 data-nosnippet>914</a><span class="doccomment">/// Requires [`GatewayIntents::GUILDS`].
 <a href=#915 id=915 data-nosnippet>915</a>///
-<a href=#916 id=916 data-nosnippet>916</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#stage-instance-create).
+<a href=#916 id=916 data-nosnippet>916</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#stage-instance-create).
 <a href=#917 id=917 data-nosnippet>917</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#918 id=918 data-nosnippet>918</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#919 id=919 data-nosnippet>919</a>#[serde(transparent)]
@@ -924,7 +924,7 @@
 <a href=#924 id=924 data-nosnippet>924</a>
 <a href=#925 id=925 data-nosnippet>925</a><span class="doccomment">/// Requires [`GatewayIntents::GUILDS`].
 <a href=#926 id=926 data-nosnippet>926</a>///
-<a href=#927 id=927 data-nosnippet>927</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#stage-instance-update).
+<a href=#927 id=927 data-nosnippet>927</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#stage-instance-update).
 <a href=#928 id=928 data-nosnippet>928</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#929 id=929 data-nosnippet>929</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#930 id=930 data-nosnippet>930</a>#[serde(transparent)]
@@ -935,7 +935,7 @@
 <a href=#935 id=935 data-nosnippet>935</a>
 <a href=#936 id=936 data-nosnippet>936</a><span class="doccomment">/// Requires [`GatewayIntents::GUILDS`].
 <a href=#937 id=937 data-nosnippet>937</a>///
-<a href=#938 id=938 data-nosnippet>938</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#stage-instance-delete).
+<a href=#938 id=938 data-nosnippet>938</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#stage-instance-delete).
 <a href=#939 id=939 data-nosnippet>939</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#940 id=940 data-nosnippet>940</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#941 id=941 data-nosnippet>941</a>#[serde(transparent)]
@@ -946,7 +946,7 @@
 <a href=#946 id=946 data-nosnippet>946</a>
 <a href=#947 id=947 data-nosnippet>947</a><span class="doccomment">/// Requires [`GatewayIntents::GUILDS`].
 <a href=#948 id=948 data-nosnippet>948</a>///
-<a href=#949 id=949 data-nosnippet>949</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#thread-create).
+<a href=#949 id=949 data-nosnippet>949</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#thread-create).
 <a href=#950 id=950 data-nosnippet>950</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#951 id=951 data-nosnippet>951</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#952 id=952 data-nosnippet>952</a>#[serde(transparent)]
@@ -957,7 +957,7 @@
 <a href=#957 id=957 data-nosnippet>957</a>
 <a href=#958 id=958 data-nosnippet>958</a><span class="doccomment">/// Requires [`GatewayIntents::GUILDS`].
 <a href=#959 id=959 data-nosnippet>959</a>///
-<a href=#960 id=960 data-nosnippet>960</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#thread-update).
+<a href=#960 id=960 data-nosnippet>960</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#thread-update).
 <a href=#961 id=961 data-nosnippet>961</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#962 id=962 data-nosnippet>962</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#963 id=963 data-nosnippet>963</a>#[serde(transparent)]
@@ -968,7 +968,7 @@
 <a href=#968 id=968 data-nosnippet>968</a>
 <a href=#969 id=969 data-nosnippet>969</a><span class="doccomment">/// Requires [`GatewayIntents::GUILDS`].
 <a href=#970 id=970 data-nosnippet>970</a>///
-<a href=#971 id=971 data-nosnippet>971</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#thread-delete).
+<a href=#971 id=971 data-nosnippet>971</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#thread-delete).
 <a href=#972 id=972 data-nosnippet>972</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#973 id=973 data-nosnippet>973</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#974 id=974 data-nosnippet>974</a>#[serde(transparent)]
@@ -979,7 +979,7 @@
 <a href=#979 id=979 data-nosnippet>979</a>
 <a href=#980 id=980 data-nosnippet>980</a><span class="doccomment">/// Requires [`GatewayIntents::GUILDS`].
 <a href=#981 id=981 data-nosnippet>981</a>///
-<a href=#982 id=982 data-nosnippet>982</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#thread-list-sync).
+<a href=#982 id=982 data-nosnippet>982</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#thread-list-sync).
 <a href=#983 id=983 data-nosnippet>983</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#984 id=984 data-nosnippet>984</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#985 id=985 data-nosnippet>985</a>#[non_exhaustive]
@@ -1000,7 +1000,7 @@
 <a href=#1000 id=1000 data-nosnippet>1000</a><span class="doccomment">/// Requires [`GatewayIntents::GUILDS`], and, to receive this event for other users,
 <a href=#1001 id=1001 data-nosnippet>1001</a>/// [`GatewayIntents::GUILD_MEMBERS`].
 <a href=#1002 id=1002 data-nosnippet>1002</a>///
-<a href=#1003 id=1003 data-nosnippet>1003</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#thread-member-update).
+<a href=#1003 id=1003 data-nosnippet>1003</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#thread-member-update).
 <a href=#1004 id=1004 data-nosnippet>1004</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#1005 id=1005 data-nosnippet>1005</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#1006 id=1006 data-nosnippet>1006</a>#[serde(transparent)]
@@ -1011,7 +1011,7 @@
 <a href=#1011 id=1011 data-nosnippet>1011</a>
 <a href=#1012 id=1012 data-nosnippet>1012</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_MEMBERS`].
 <a href=#1013 id=1013 data-nosnippet>1013</a>///
-<a href=#1014 id=1014 data-nosnippet>1014</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#thread-members-update).
+<a href=#1014 id=1014 data-nosnippet>1014</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#thread-members-update).
 <a href=#1015 id=1015 data-nosnippet>1015</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#1016 id=1016 data-nosnippet>1016</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#1017 id=1017 data-nosnippet>1017</a>#[non_exhaustive]
@@ -1035,7 +1035,7 @@
 <a href=#1035 id=1035 data-nosnippet>1035</a>
 <a href=#1036 id=1036 data-nosnippet>1036</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_SCHEDULED_EVENTS`].
 <a href=#1037 id=1037 data-nosnippet>1037</a>///
-<a href=#1038 id=1038 data-nosnippet>1038</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-create).
+<a href=#1038 id=1038 data-nosnippet>1038</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#guild-scheduled-event-create).
 <a href=#1039 id=1039 data-nosnippet>1039</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#1040 id=1040 data-nosnippet>1040</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#1041 id=1041 data-nosnippet>1041</a>#[serde(transparent)]
@@ -1046,7 +1046,7 @@
 <a href=#1046 id=1046 data-nosnippet>1046</a>
 <a href=#1047 id=1047 data-nosnippet>1047</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_SCHEDULED_EVENTS`].
 <a href=#1048 id=1048 data-nosnippet>1048</a>///
-<a href=#1049 id=1049 data-nosnippet>1049</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-update).
+<a href=#1049 id=1049 data-nosnippet>1049</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#guild-scheduled-event-update).
 <a href=#1050 id=1050 data-nosnippet>1050</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#1051 id=1051 data-nosnippet>1051</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#1052 id=1052 data-nosnippet>1052</a>#[serde(transparent)]
@@ -1057,7 +1057,7 @@
 <a href=#1057 id=1057 data-nosnippet>1057</a>
 <a href=#1058 id=1058 data-nosnippet>1058</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_SCHEDULED_EVENTS`].
 <a href=#1059 id=1059 data-nosnippet>1059</a>///
-<a href=#1060 id=1060 data-nosnippet>1060</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-delete).
+<a href=#1060 id=1060 data-nosnippet>1060</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#guild-scheduled-event-delete).
 <a href=#1061 id=1061 data-nosnippet>1061</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#1062 id=1062 data-nosnippet>1062</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#1063 id=1063 data-nosnippet>1063</a>#[serde(transparent)]
@@ -1068,7 +1068,7 @@
 <a href=#1068 id=1068 data-nosnippet>1068</a>
 <a href=#1069 id=1069 data-nosnippet>1069</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_SCHEDULED_EVENTS`].
 <a href=#1070 id=1070 data-nosnippet>1070</a>///
-<a href=#1071 id=1071 data-nosnippet>1071</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-user-add).
+<a href=#1071 id=1071 data-nosnippet>1071</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#guild-scheduled-event-user-add).
 <a href=#1072 id=1072 data-nosnippet>1072</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#1073 id=1073 data-nosnippet>1073</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#1074 id=1074 data-nosnippet>1074</a>#[non_exhaustive]
@@ -1081,7 +1081,7 @@
 <a href=#1081 id=1081 data-nosnippet>1081</a>
 <a href=#1082 id=1082 data-nosnippet>1082</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_SCHEDULED_EVENTS`].
 <a href=#1083 id=1083 data-nosnippet>1083</a>///
-<a href=#1084 id=1084 data-nosnippet>1084</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-user-remove).
+<a href=#1084 id=1084 data-nosnippet>1084</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#guild-scheduled-event-user-remove).
 <a href=#1085 id=1085 data-nosnippet>1085</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#1086 id=1086 data-nosnippet>1086</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#1087 id=1087 data-nosnippet>1087</a>#[non_exhaustive]
@@ -1094,7 +1094,7 @@
 <a href=#1094 id=1094 data-nosnippet>1094</a>
 <a href=#1095 id=1095 data-nosnippet>1095</a><span class="doccomment">/// Requires no gateway intents.
 <a href=#1096 id=1096 data-nosnippet>1096</a>///
-<a href=#1097 id=1097 data-nosnippet>1097</a>/// [Discord docs](https://discord.com/developers/docs/monetization/entitlements#new-entitlement)
+<a href=#1097 id=1097 data-nosnippet>1097</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#entitlement-create)
 <a href=#1098 id=1098 data-nosnippet>1098</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#1099 id=1099 data-nosnippet>1099</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#1100 id=1100 data-nosnippet>1100</a>#[serde(transparent)]
@@ -1105,7 +1105,7 @@
 <a href=#1105 id=1105 data-nosnippet>1105</a>
 <a href=#1106 id=1106 data-nosnippet>1106</a><span class="doccomment">/// Requires no gateway intents.
 <a href=#1107 id=1107 data-nosnippet>1107</a>///
-<a href=#1108 id=1108 data-nosnippet>1108</a>/// [Discord docs](https://discord.com/developers/docs/monetization/entitlements#new-entitlement)
+<a href=#1108 id=1108 data-nosnippet>1108</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#entitlement-update)
 <a href=#1109 id=1109 data-nosnippet>1109</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#1110 id=1110 data-nosnippet>1110</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#1111 id=1111 data-nosnippet>1111</a>#[serde(transparent)]
@@ -1116,7 +1116,7 @@
 <a href=#1116 id=1116 data-nosnippet>1116</a>
 <a href=#1117 id=1117 data-nosnippet>1117</a><span class="doccomment">/// Requires no gateway intents.
 <a href=#1118 id=1118 data-nosnippet>1118</a>///
-<a href=#1119 id=1119 data-nosnippet>1119</a>/// [Discord docs](https://discord.com/developers/docs/monetization/entitlements#new-entitlement)
+<a href=#1119 id=1119 data-nosnippet>1119</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#entitlement-delete)
 <a href=#1120 id=1120 data-nosnippet>1120</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#1121 id=1121 data-nosnippet>1121</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#1122 id=1122 data-nosnippet>1122</a>#[serde(transparent)]
@@ -1127,7 +1127,7 @@
 <a href=#1127 id=1127 data-nosnippet>1127</a>
 <a href=#1128 id=1128 data-nosnippet>1128</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_MESSAGE_POLLS`] or [`GatewayIntents::DIRECT_MESSAGE_POLLS`].
 <a href=#1129 id=1129 data-nosnippet>1129</a>///
-<a href=#1130 id=1130 data-nosnippet>1130</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#message-poll-vote-add)
+<a href=#1130 id=1130 data-nosnippet>1130</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#message-poll-vote-add)
 <a href=#1131 id=1131 data-nosnippet>1131</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#1132 id=1132 data-nosnippet>1132</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#1133 id=1133 data-nosnippet>1133</a>#[non_exhaustive]
@@ -1141,7 +1141,7 @@
 <a href=#1141 id=1141 data-nosnippet>1141</a>
 <a href=#1142 id=1142 data-nosnippet>1142</a><span class="doccomment">/// Requires [`GatewayIntents::GUILD_MESSAGE_POLLS`] or [`GatewayIntents::DIRECT_MESSAGE_POLLS`].
 <a href=#1143 id=1143 data-nosnippet>1143</a>///
-<a href=#1144 id=1144 data-nosnippet>1144</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#message-poll-vote-remove)
+<a href=#1144 id=1144 data-nosnippet>1144</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#message-poll-vote-remove)
 <a href=#1145 id=1145 data-nosnippet>1145</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#1146 id=1146 data-nosnippet>1146</a>#[derive(Clone, Debug, Deserialize, Serialize)]
 <a href=#1147 id=1147 data-nosnippet>1147</a>#[non_exhaustive]
@@ -1153,7 +1153,7 @@
 <a href=#1153 id=1153 data-nosnippet>1153</a>    <span class="kw">pub </span>answer_id: AnswerId,
 <a href=#1154 id=1154 data-nosnippet>1154</a>}
 <a href=#1155 id=1155 data-nosnippet>1155</a>
-<a href=#1156 id=1156 data-nosnippet>1156</a><span class="doccomment">/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#payload-structure).
+<a href=#1156 id=1156 data-nosnippet>1156</a><span class="doccomment">/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#payload-structure).
 <a href=#1157 id=1157 data-nosnippet>1157</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#1158 id=1158 data-nosnippet>1158</a>#[allow(clippy::large_enum_variant)]
 <a href=#1159 id=1159 data-nosnippet>1159</a>#[derive(Debug, Clone, Serialize)]
@@ -1206,7 +1206,7 @@
 <a href=#1206 id=1206 data-nosnippet>1206</a>
 <a href=#1207 id=1207 data-nosnippet>1207</a><span class="doccomment">/// Event received over a websocket connection
 <a href=#1208 id=1208 data-nosnippet>1208</a>///
-<a href=#1209 id=1209 data-nosnippet>1209</a>/// [Discord docs](https://discord.com/developers/docs/topics/gateway-events#receive-events).
+<a href=#1209 id=1209 data-nosnippet>1209</a>/// [Discord docs](https://docs.discord.com/developers/events/gateway-events#receive-events).
 <a href=#1210 id=1210 data-nosnippet>1210</a></span><span class="attr">#[allow(clippy::large_enum_variant)]
 <a href=#1211 id=1211 data-nosnippet>1211</a>#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
 <a href=#1212 id=1212 data-nosnippet>1212</a>#[derive(Clone, Debug, Deserialize, Serialize)]
