@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/model/channel/message.rs`."><title>message.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="serenity" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (a423f68a0 2026-02-13)" data-channel="nightly" data-search-js="search-fb33671b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../../static.files/storage-f9617a14.js"></script><script defer src="../../../../static.files/src-script-813739b1.js"></script><script defer src="../../../../src-files.js"></script><script defer src="../../../../static.files/main-12f88f4f.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1><div class="sub-heading">serenity/model/channel/</div>message.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-4"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! Models relating to Discord channels.
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/model/channel/message.rs`."><title>message.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="serenity" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (838709580 2026-02-17)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../../static.files/storage-41dd4d93.js"></script><script defer src="../../../../static.files/src-script-813739b1.js"></script><script defer src="../../../../src-files.js"></script><script defer src="../../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1><div class="sub-heading">serenity/model/channel/</div>message.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-4"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! Models relating to Discord channels.
 <a href=#2 id=2 data-nosnippet>2</a>
 <a href=#3 id=3 data-nosnippet>3</a></span><span class="attr">#[cfg(feature = <span class="string">"model"</span>)]
 <a href=#4 id=4 data-nosnippet>4</a></span><span class="kw">use </span>std::fmt::Display;
@@ -1459,86 +1459,85 @@
 <a href=#1459 id=1459 data-nosnippet>1459</a>
 <a href=#1460 id=1460 data-nosnippet>1460</a><span class="doccomment">/// The count of a single [`PollAnswer`]'s results.
 <a href=#1461 id=1461 data-nosnippet>1461</a>///
-<a href=#1462 id=1462 data-nosnippet>1462</a>/// [Discord docs](https://docs.discord.com/developers/resources/poll#poll-results-object-poll-results-object-structure)
-<a href=#1463 id=1463 data-nosnippet>1463</a></span><span class="comment">// TODO: https://docs.discord.com/developers/resources/poll#poll-results-object-poll-answer-count-object-structure
-<a href=#1464 id=1464 data-nosnippet>1464</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
-<a href=#1465 id=1465 data-nosnippet>1465</a>#[derive(Clone, Debug, Deserialize, Serialize)]
-<a href=#1466 id=1466 data-nosnippet>1466</a>#[non_exhaustive]
-<a href=#1467 id=1467 data-nosnippet>1467</a></span><span class="kw">pub struct </span>PollAnswerCount {
-<a href=#1468 id=1468 data-nosnippet>1468</a>    <span class="kw">pub </span>id: AnswerId,
-<a href=#1469 id=1469 data-nosnippet>1469</a>    <span class="kw">pub </span>count: u64,
-<a href=#1470 id=1470 data-nosnippet>1470</a>    <span class="kw">pub </span>me_voted: bool,
-<a href=#1471 id=1471 data-nosnippet>1471</a>}
-<a href=#1472 id=1472 data-nosnippet>1472</a>
-<a href=#1473 id=1473 data-nosnippet>1473</a><span class="comment">// all tests here require cache, move if non-cache test is added
-<a href=#1474 id=1474 data-nosnippet>1474</a></span><span class="attr">#[cfg(all(test, feature = <span class="string">"cache"</span>))]
-<a href=#1475 id=1475 data-nosnippet>1475</a></span><span class="kw">mod </span>tests {
-<a href=#1476 id=1476 data-nosnippet>1476</a>    <span class="kw">use </span>std::collections::HashMap;
-<a href=#1477 id=1477 data-nosnippet>1477</a>
-<a href=#1478 id=1478 data-nosnippet>1478</a>    <span class="kw">use </span>dashmap::DashMap;
-<a href=#1479 id=1479 data-nosnippet>1479</a>
-<a href=#1480 id=1480 data-nosnippet>1480</a>    <span class="kw">use </span>super::{
-<a href=#1481 id=1481 data-nosnippet>1481</a>        Guild,
-<a href=#1482 id=1482 data-nosnippet>1482</a>        GuildChannel,
-<a href=#1483 id=1483 data-nosnippet>1483</a>        Member,
-<a href=#1484 id=1484 data-nosnippet>1484</a>        Message,
-<a href=#1485 id=1485 data-nosnippet>1485</a>        PermissionOverwrite,
-<a href=#1486 id=1486 data-nosnippet>1486</a>        PermissionOverwriteType,
-<a href=#1487 id=1487 data-nosnippet>1487</a>        Permissions,
-<a href=#1488 id=1488 data-nosnippet>1488</a>        User,
-<a href=#1489 id=1489 data-nosnippet>1489</a>        UserId,
-<a href=#1490 id=1490 data-nosnippet>1490</a>    };
-<a href=#1491 id=1491 data-nosnippet>1491</a>    <span class="kw">use </span><span class="kw">crate</span>::cache::wrappers::MaybeMap;
-<a href=#1492 id=1492 data-nosnippet>1492</a>    <span class="kw">use </span><span class="kw">crate</span>::cache::Cache;
-<a href=#1493 id=1493 data-nosnippet>1493</a>
-<a href=#1494 id=1494 data-nosnippet>1494</a>    <span class="doccomment">/// Test that author_permissions checks the permissions in a channel, not just the guild.
-<a href=#1495 id=1495 data-nosnippet>1495</a>    </span><span class="attr">#[test]
-<a href=#1496 id=1496 data-nosnippet>1496</a>    </span><span class="kw">fn </span>author_permissions_respects_overwrites() {
-<a href=#1497 id=1497 data-nosnippet>1497</a>        <span class="comment">// Author of the message, with a random ID that won't collide with defaults.
-<a href=#1498 id=1498 data-nosnippet>1498</a>        </span><span class="kw">let </span>author = User {
-<a href=#1499 id=1499 data-nosnippet>1499</a>            id: UserId::new(<span class="number">50778944701071</span>),
-<a href=#1500 id=1500 data-nosnippet>1500</a>            ..Default::default()
-<a href=#1501 id=1501 data-nosnippet>1501</a>        };
-<a href=#1502 id=1502 data-nosnippet>1502</a>
-<a href=#1503 id=1503 data-nosnippet>1503</a>        <span class="comment">// Channel with the message, with SEND_MESSAGES on.
-<a href=#1504 id=1504 data-nosnippet>1504</a>        </span><span class="kw">let </span>channel = GuildChannel {
-<a href=#1505 id=1505 data-nosnippet>1505</a>            permission_overwrites: <span class="macro">vec!</span>[PermissionOverwrite {
-<a href=#1506 id=1506 data-nosnippet>1506</a>                allow: Permissions::SEND_MESSAGES,
-<a href=#1507 id=1507 data-nosnippet>1507</a>                deny: Permissions::default(),
-<a href=#1508 id=1508 data-nosnippet>1508</a>                kind: PermissionOverwriteType::Member(author.id),
-<a href=#1509 id=1509 data-nosnippet>1509</a>            }],
-<a href=#1510 id=1510 data-nosnippet>1510</a>            ..Default::default()
-<a href=#1511 id=1511 data-nosnippet>1511</a>        };
-<a href=#1512 id=1512 data-nosnippet>1512</a>        <span class="kw">let </span>channel_id = channel.id;
-<a href=#1513 id=1513 data-nosnippet>1513</a>
-<a href=#1514 id=1514 data-nosnippet>1514</a>        <span class="comment">// Guild with the author and channel cached, default (empty) permissions.
-<a href=#1515 id=1515 data-nosnippet>1515</a>        </span><span class="kw">let </span>guild = Guild {
-<a href=#1516 id=1516 data-nosnippet>1516</a>            channels: HashMap::from([(channel.id, channel)]),
-<a href=#1517 id=1517 data-nosnippet>1517</a>            members: HashMap::from([(author.id, Member {
-<a href=#1518 id=1518 data-nosnippet>1518</a>                user: author.clone(),
-<a href=#1519 id=1519 data-nosnippet>1519</a>                ..Default::default()
-<a href=#1520 id=1520 data-nosnippet>1520</a>            })]),
-<a href=#1521 id=1521 data-nosnippet>1521</a>            ..Default::default()
-<a href=#1522 id=1522 data-nosnippet>1522</a>        };
-<a href=#1523 id=1523 data-nosnippet>1523</a>
-<a href=#1524 id=1524 data-nosnippet>1524</a>        <span class="comment">// Message, tied to the guild and the channel.
-<a href=#1525 id=1525 data-nosnippet>1525</a>        </span><span class="kw">let </span>message = Message {
-<a href=#1526 id=1526 data-nosnippet>1526</a>            author,
-<a href=#1527 id=1527 data-nosnippet>1527</a>            channel_id,
-<a href=#1528 id=1528 data-nosnippet>1528</a>            guild_id: <span class="prelude-val">Some</span>(guild.id),
-<a href=#1529 id=1529 data-nosnippet>1529</a>            ..Default::default()
-<a href=#1530 id=1530 data-nosnippet>1530</a>        };
-<a href=#1531 id=1531 data-nosnippet>1531</a>
-<a href=#1532 id=1532 data-nosnippet>1532</a>        <span class="comment">// Cache, with the guild setup.
-<a href=#1533 id=1533 data-nosnippet>1533</a>        </span><span class="kw">let </span><span class="kw-2">mut </span>cache = Cache::new();
-<a href=#1534 id=1534 data-nosnippet>1534</a>        cache.guilds = MaybeMap(<span class="prelude-val">Some</span>({
-<a href=#1535 id=1535 data-nosnippet>1535</a>            <span class="kw">let </span>guilds = DashMap::default();
-<a href=#1536 id=1536 data-nosnippet>1536</a>            guilds.insert(guild.id, guild);
-<a href=#1537 id=1537 data-nosnippet>1537</a>            guilds
-<a href=#1538 id=1538 data-nosnippet>1538</a>        }));
-<a href=#1539 id=1539 data-nosnippet>1539</a>
-<a href=#1540 id=1540 data-nosnippet>1540</a>        <span class="comment">// The author should only have the one permission, SEND_MESSAGES.
-<a href=#1541 id=1541 data-nosnippet>1541</a>        </span><span class="macro">assert_eq!</span>(message.author_permissions(<span class="kw-2">&amp;</span>cache), <span class="prelude-val">Some</span>(Permissions::SEND_MESSAGES));
-<a href=#1542 id=1542 data-nosnippet>1542</a>    }
-<a href=#1543 id=1543 data-nosnippet>1543</a>}
+<a href=#1462 id=1462 data-nosnippet>1462</a>/// [Discord docs](https://docs.discord.com/developers/resources/poll#poll-answer-object-poll-answer-object-structure)
+<a href=#1463 id=1463 data-nosnippet>1463</a></span><span class="attr">#[cfg_attr(feature = <span class="string">"typesize"</span>, derive(typesize::derive::TypeSize))]
+<a href=#1464 id=1464 data-nosnippet>1464</a>#[derive(Clone, Debug, Deserialize, Serialize)]
+<a href=#1465 id=1465 data-nosnippet>1465</a>#[non_exhaustive]
+<a href=#1466 id=1466 data-nosnippet>1466</a></span><span class="kw">pub struct </span>PollAnswerCount {
+<a href=#1467 id=1467 data-nosnippet>1467</a>    <span class="kw">pub </span>id: AnswerId,
+<a href=#1468 id=1468 data-nosnippet>1468</a>    <span class="kw">pub </span>count: u64,
+<a href=#1469 id=1469 data-nosnippet>1469</a>    <span class="kw">pub </span>me_voted: bool,
+<a href=#1470 id=1470 data-nosnippet>1470</a>}
+<a href=#1471 id=1471 data-nosnippet>1471</a>
+<a href=#1472 id=1472 data-nosnippet>1472</a><span class="comment">// all tests here require cache, move if non-cache test is added
+<a href=#1473 id=1473 data-nosnippet>1473</a></span><span class="attr">#[cfg(all(test, feature = <span class="string">"cache"</span>))]
+<a href=#1474 id=1474 data-nosnippet>1474</a></span><span class="kw">mod </span>tests {
+<a href=#1475 id=1475 data-nosnippet>1475</a>    <span class="kw">use </span>std::collections::HashMap;
+<a href=#1476 id=1476 data-nosnippet>1476</a>
+<a href=#1477 id=1477 data-nosnippet>1477</a>    <span class="kw">use </span>dashmap::DashMap;
+<a href=#1478 id=1478 data-nosnippet>1478</a>
+<a href=#1479 id=1479 data-nosnippet>1479</a>    <span class="kw">use </span>super::{
+<a href=#1480 id=1480 data-nosnippet>1480</a>        Guild,
+<a href=#1481 id=1481 data-nosnippet>1481</a>        GuildChannel,
+<a href=#1482 id=1482 data-nosnippet>1482</a>        Member,
+<a href=#1483 id=1483 data-nosnippet>1483</a>        Message,
+<a href=#1484 id=1484 data-nosnippet>1484</a>        PermissionOverwrite,
+<a href=#1485 id=1485 data-nosnippet>1485</a>        PermissionOverwriteType,
+<a href=#1486 id=1486 data-nosnippet>1486</a>        Permissions,
+<a href=#1487 id=1487 data-nosnippet>1487</a>        User,
+<a href=#1488 id=1488 data-nosnippet>1488</a>        UserId,
+<a href=#1489 id=1489 data-nosnippet>1489</a>    };
+<a href=#1490 id=1490 data-nosnippet>1490</a>    <span class="kw">use </span><span class="kw">crate</span>::cache::wrappers::MaybeMap;
+<a href=#1491 id=1491 data-nosnippet>1491</a>    <span class="kw">use </span><span class="kw">crate</span>::cache::Cache;
+<a href=#1492 id=1492 data-nosnippet>1492</a>
+<a href=#1493 id=1493 data-nosnippet>1493</a>    <span class="doccomment">/// Test that author_permissions checks the permissions in a channel, not just the guild.
+<a href=#1494 id=1494 data-nosnippet>1494</a>    </span><span class="attr">#[test]
+<a href=#1495 id=1495 data-nosnippet>1495</a>    </span><span class="kw">fn </span>author_permissions_respects_overwrites() {
+<a href=#1496 id=1496 data-nosnippet>1496</a>        <span class="comment">// Author of the message, with a random ID that won't collide with defaults.
+<a href=#1497 id=1497 data-nosnippet>1497</a>        </span><span class="kw">let </span>author = User {
+<a href=#1498 id=1498 data-nosnippet>1498</a>            id: UserId::new(<span class="number">50778944701071</span>),
+<a href=#1499 id=1499 data-nosnippet>1499</a>            ..Default::default()
+<a href=#1500 id=1500 data-nosnippet>1500</a>        };
+<a href=#1501 id=1501 data-nosnippet>1501</a>
+<a href=#1502 id=1502 data-nosnippet>1502</a>        <span class="comment">// Channel with the message, with SEND_MESSAGES on.
+<a href=#1503 id=1503 data-nosnippet>1503</a>        </span><span class="kw">let </span>channel = GuildChannel {
+<a href=#1504 id=1504 data-nosnippet>1504</a>            permission_overwrites: <span class="macro">vec!</span>[PermissionOverwrite {
+<a href=#1505 id=1505 data-nosnippet>1505</a>                allow: Permissions::SEND_MESSAGES,
+<a href=#1506 id=1506 data-nosnippet>1506</a>                deny: Permissions::default(),
+<a href=#1507 id=1507 data-nosnippet>1507</a>                kind: PermissionOverwriteType::Member(author.id),
+<a href=#1508 id=1508 data-nosnippet>1508</a>            }],
+<a href=#1509 id=1509 data-nosnippet>1509</a>            ..Default::default()
+<a href=#1510 id=1510 data-nosnippet>1510</a>        };
+<a href=#1511 id=1511 data-nosnippet>1511</a>        <span class="kw">let </span>channel_id = channel.id;
+<a href=#1512 id=1512 data-nosnippet>1512</a>
+<a href=#1513 id=1513 data-nosnippet>1513</a>        <span class="comment">// Guild with the author and channel cached, default (empty) permissions.
+<a href=#1514 id=1514 data-nosnippet>1514</a>        </span><span class="kw">let </span>guild = Guild {
+<a href=#1515 id=1515 data-nosnippet>1515</a>            channels: HashMap::from([(channel.id, channel)]),
+<a href=#1516 id=1516 data-nosnippet>1516</a>            members: HashMap::from([(author.id, Member {
+<a href=#1517 id=1517 data-nosnippet>1517</a>                user: author.clone(),
+<a href=#1518 id=1518 data-nosnippet>1518</a>                ..Default::default()
+<a href=#1519 id=1519 data-nosnippet>1519</a>            })]),
+<a href=#1520 id=1520 data-nosnippet>1520</a>            ..Default::default()
+<a href=#1521 id=1521 data-nosnippet>1521</a>        };
+<a href=#1522 id=1522 data-nosnippet>1522</a>
+<a href=#1523 id=1523 data-nosnippet>1523</a>        <span class="comment">// Message, tied to the guild and the channel.
+<a href=#1524 id=1524 data-nosnippet>1524</a>        </span><span class="kw">let </span>message = Message {
+<a href=#1525 id=1525 data-nosnippet>1525</a>            author,
+<a href=#1526 id=1526 data-nosnippet>1526</a>            channel_id,
+<a href=#1527 id=1527 data-nosnippet>1527</a>            guild_id: <span class="prelude-val">Some</span>(guild.id),
+<a href=#1528 id=1528 data-nosnippet>1528</a>            ..Default::default()
+<a href=#1529 id=1529 data-nosnippet>1529</a>        };
+<a href=#1530 id=1530 data-nosnippet>1530</a>
+<a href=#1531 id=1531 data-nosnippet>1531</a>        <span class="comment">// Cache, with the guild setup.
+<a href=#1532 id=1532 data-nosnippet>1532</a>        </span><span class="kw">let </span><span class="kw-2">mut </span>cache = Cache::new();
+<a href=#1533 id=1533 data-nosnippet>1533</a>        cache.guilds = MaybeMap(<span class="prelude-val">Some</span>({
+<a href=#1534 id=1534 data-nosnippet>1534</a>            <span class="kw">let </span>guilds = DashMap::default();
+<a href=#1535 id=1535 data-nosnippet>1535</a>            guilds.insert(guild.id, guild);
+<a href=#1536 id=1536 data-nosnippet>1536</a>            guilds
+<a href=#1537 id=1537 data-nosnippet>1537</a>        }));
+<a href=#1538 id=1538 data-nosnippet>1538</a>
+<a href=#1539 id=1539 data-nosnippet>1539</a>        <span class="comment">// The author should only have the one permission, SEND_MESSAGES.
+<a href=#1540 id=1540 data-nosnippet>1540</a>        </span><span class="macro">assert_eq!</span>(message.author_permissions(<span class="kw-2">&amp;</span>cache), <span class="prelude-val">Some</span>(Permissions::SEND_MESSAGES));
+<a href=#1541 id=1541 data-nosnippet>1541</a>    }
+<a href=#1542 id=1542 data-nosnippet>1542</a>}
 </code></pre></div></section></main></body></html>
